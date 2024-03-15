@@ -8,8 +8,11 @@ from pyspark.sql.functions import col
 
 def q1_memory(file_path: str) -> List[Tuple[datetime.date, str]]:
     
+    #Creating SparkSession 
     spark = SparkSession.builder.appName('readJson').getOrCreate()
+    #Read file as pyspark object()   
     data = spark.read.json(file_path)    
+    #transformation and renaming columns steps
     dfcol = data.withColumn("created_at", data["date"].cast('date'))\
                                 .withColumn("user_id", data["user.id"])\
                                 .withColumn("username", data["user.username"])
