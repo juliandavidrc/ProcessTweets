@@ -20,3 +20,7 @@ def q1_memory(file_path: str) -> List[Tuple[datetime.date, str]]:
     df = dfcol.select(col("created_at"), col("user_id"), col("username")).groupBy("created_at", "username").count()
     df.sort(df["count"].desc()).show(10)    
     return df
+
+if __name__ == "__main__":
+    file_path = "data/farmers-protest-tweets-2021-2-4.json.gz"
+    q1_memory(file_path)
