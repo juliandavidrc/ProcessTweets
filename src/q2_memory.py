@@ -7,14 +7,20 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
 import emoji
 
+
 def q2_memory(file_path: str) -> List[Tuple[str, int]]:
     #Creating SparkSession 
     spark = SparkSession.builder.appName('readJson').getOrCreate()
     #Read file as pyspark object()   
     data = spark.read.json(file_path)            
-    dfaux = data.select(col("content"), col("id")) #.groupBy("content").count()    
-    df = dfaux.toPandas() #.sort_values("count", ascending=False)
+    #Selection only the columns to process to enhance time and usage memory consumption
+    dfaux = data.select(col("content"), col("id"))
+    df = dfaux.toPandas() 
+    #Creating string for each content
     text = df['content'].str.cat(sep='\n')
+    """ Creating a list value_counts with emoji.emoji_list() function, 
+        finds all emoji in string and their position. After count 'emoji' field)
+    """
     out = (pd.DataFrame(emoji.emoji_list(text)).value_counts('emoji')
             .rename_axis('Smiley').rename('Count').reset_index()
             .assign(Type=lambda x: x['Smiley'].apply(emoji.demojize)))
@@ -23,5 +29,5 @@ def q2_memory(file_path: str) -> List[Tuple[str, int]]:
 
 
 if __name__ == "__main__":
-    file_path = "data/farmers-protest-tweets-2021-2-4.json.gz"
+    file_path = "data/farmers-tweets.json.gz"
     q2_memory(file_path)

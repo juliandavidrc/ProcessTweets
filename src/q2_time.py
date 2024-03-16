@@ -14,19 +14,13 @@ def q2_time(file_path: str) -> List[Tuple[str, int]]:
     data = [json.loads(line) for line in open(file_path, 'r')]
     #convert to dataframe
     df = pd.DataFrame(data)
-    #transformation and renaming columns steps    
-    #df['user_id'] = df['user'].apply(lambda d: d['id'])
-    #Duplicate tweets by user_id findings
-    #print(df.shape)
-    df=df.drop_duplicates(subset=['content','id'])
-    print(df.shape)
-    #dfres = df.groupby(['content','user_id'])['id'].count().reset_index(name="count").sort_values("count", ascending=False)      
-    #print(dfres.query('count > 1').head(10))  
-    
-    
+    #Selection only the columns to process to enhance time and usage memory consumption
     dfres = df[['content','id']]
-
-    text = dfres['content'].str.cat(sep='\n')    
+    #Creating string for each content
+    text = dfres['content'].str.cat(sep='\n')
+    """ Creating a list value_counts with emoji.emoji_list() function, 
+        finds all emoji in string and their position. After count 'emoji' field)
+    """
     out = (pd.DataFrame(emoji.emoji_list(text)).value_counts('emoji')
             .rename_axis('Smiley').rename('Count').reset_index()
             .assign(Type=lambda x: x['Smiley'].apply(emoji.demojize)))
@@ -36,6 +30,5 @@ def q2_time(file_path: str) -> List[Tuple[str, int]]:
 
 
 if __name__ == "__main__":
-    file_path = "data/farmers-protest-tweets-2021-2-4.json"
-    #file_path = "data/farmers-tweets.json"
+    file_path = "data/farmers-protest-tweets-2021-2-4.json"    
     q2_time(file_path)
