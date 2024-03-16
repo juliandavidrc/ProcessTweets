@@ -25,5 +25,5 @@ def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
 
 
 if __name__ == "__main__":
-    file_path = "data/farmers-tweets.json"
+    file_path = "data/farmers-protest-tweets-2021-2-4.json"
     q1_time(file_path)
