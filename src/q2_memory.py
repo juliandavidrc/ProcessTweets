@@ -29,5 +29,5 @@ def q2_memory(file_path: str) -> List[Tuple[str, int]]:
 
 
 if __name__ == "__main__":
-    file_path = "data/farmers-tweets.json.gz"
+    file_path = "data/farmers-protest-tweets-2021-2-4.json.gz"
     q2_memory(file_path)
