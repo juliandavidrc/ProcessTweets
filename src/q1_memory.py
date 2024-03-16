@@ -24,9 +24,10 @@ def q1_memory(file_path: str) -> List[Tuple[datetime.date, str]]:
     df = dfaux.toPandas().sort_values("count", ascending=False)    
 
     #Printing tuples as datetime.date format
-    print(list(df[['created_at','username']].head(10).itertuples(index=False, name=None)))        
-    #return df
+    df_ret = list(df[['created_at','username']].head(10).itertuples(index=False, name=None))
+    print(df_ret)
+    #return df_ret
 
 if __name__ == "__main__":
-    file_path = "data/farmers-tweets.json.gz"
+    file_path = "data/farmers-protest-tweets-2021-2-4.json.gz"
     q1_memory(file_path)

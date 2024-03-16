@@ -8,6 +8,7 @@ memory-profiler = "==0.61.0"
 pyspark = "*"
 pandas = "*"
 matplotlib = "*"
+emoji = "*"
 
 [dev-packages]
 ipykernel = "*"

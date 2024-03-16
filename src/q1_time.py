@@ -20,8 +20,10 @@ def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
 
     dfres = df.groupby(['created_at','username'])['id'].count().reset_index(name="count").sort_values("count", ascending=False) 
 
-    print(dfres.head(10))
-    return dfres
+    #Printing tuples as datetime.date format
+    df_ret = list(dfres[['created_at','username']].head(10).itertuples(index=False, name=None))
+    print(df_ret)
+    #return df_ret
 
 
 if __name__ == "__main__":
