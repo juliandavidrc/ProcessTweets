@@ -25,7 +25,8 @@ def q2_memory(file_path: str) -> List[Tuple[str, int]]:
             .rename_axis('Smiley').rename('Count').reset_index()
             .assign(Type=lambda x: x['Smiley'].apply(emoji.demojize)))
    
-    print(list(out[['Smiley','Count']].head(10).itertuples(index=False, name=None)))
+    df_ret = list(out[['Smiley','Count']].head(10).itertuples(index=False, name=None))
+    return df_ret
 
 
 if __name__ == "__main__":

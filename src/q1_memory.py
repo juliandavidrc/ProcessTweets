@@ -25,8 +25,7 @@ def q1_memory(file_path: str) -> List[Tuple[datetime.date, str]]:
 
     #Printing tuples as datetime.date format
     df_ret = list(df[['created_at','username']].head(10).itertuples(index=False, name=None))
-    print(df_ret)
-    #return df_ret
+    return df_ret
 
 if __name__ == "__main__":
     file_path = "data/farmers-protest-tweets-2021-2-4.json.gz"

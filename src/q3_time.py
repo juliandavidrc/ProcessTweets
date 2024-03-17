@@ -23,7 +23,9 @@ def q3_time(file_path: str) -> List[Tuple[str, int]]:
                         .rename_axis('username').reset_index())        
     df['username']=[sub.replace('@', '') for sub in df['username']]
     
-    print(list(df.head(10).itertuples(index=False, name=None)))
+    #print(list(df.head(10).itertuples(index=False, name=None)))
+    df_ret = list(df.head(10).itertuples(index=False, name=None))
+    return df_ret
 
 
 if __name__ == "__main__":
