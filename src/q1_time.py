@@ -15,6 +15,7 @@ def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
     df = pd.DataFrame(data)
     #transformation and renaming columns steps
     df["created_at"] = pd.to_datetime(df["date"]).dt.strftime('%Y-%m-%d')
+    #Make inplace tranformations to dataframe columns
     df['username'] = df['user'].apply(lambda d: d['username'])
     df['user_id'] = df['user'].apply(lambda d: d['id'])
 

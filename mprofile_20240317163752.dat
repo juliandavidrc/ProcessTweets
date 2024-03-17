@@ -1,0 +1,7 @@
+CMDLINE /Users/julianromero/.local/share/virtualenvs/ProcessTweets-raqGfvtZ/bin/python /Users/julianromero/Documents/Bench/ProcessTweets/src/q1_time.py
+MEM 0.203125 1710711472.6353
+MEM 31.234375 1710711472.7406
+MEM 53.421875 1710711472.8442
+MEM 67.765625 1710711472.9494
+MEM 90.687500 1710711473.0500
+MEM 101.312500 1710711473.1549
