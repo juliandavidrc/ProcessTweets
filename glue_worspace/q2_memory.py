@@ -34,7 +34,7 @@ class GlueProcessTweets:
         dfres = df_pd[['content','id']]
         #Creating string for each content
         text = dfres['content'].str.cat(sep='\n')
-        """ Creating a list value_counts with emoji.emoji_list() function, 
+        """ Creating a list value_counts with emoji.emoji_list() function,
             finds all emoji in string and their position. After count 'emoji' field)
         """
         out = (pd.DataFrame(emoji.emoji_list(text)).value_counts('emoji')
